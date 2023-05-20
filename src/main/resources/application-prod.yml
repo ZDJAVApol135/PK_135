@@ -1,0 +1,10 @@
+## APP CONFIG
+application:
+  title: Registration API (PROD) =>
+
+## ACTUATOR CONFIG
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
