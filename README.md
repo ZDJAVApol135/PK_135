@@ -30,3 +30,13 @@ Registration API, which provides endpoints for managing doctors, patients and th
 - `H2 Database`
 
 ---
+
+## BUILD & RUN
+
+1. Create database named `registration_db`.
+
+````mysql
+CREATE DATABASE IF NOT EXISTS registration_db;
+````
+
+---
