@@ -27,4 +27,8 @@ public class Address {
 
     @Column(nullable = false, length = 10)
     private String postcode;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "patient_id", referencedColumnName = "id")
+    private Patient patient;
 }
