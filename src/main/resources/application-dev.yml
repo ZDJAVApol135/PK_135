@@ -2,6 +2,13 @@
 application:
   title: Registration API (DEV) =>
 
+## SPRING CONFIG
+spring:
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:data.sql
+
 ## ACTUATOR CONFIG
 management:
   endpoints:

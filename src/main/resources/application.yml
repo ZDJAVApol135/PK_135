@@ -31,11 +31,11 @@ spring:
     user: ${spring.datasource.username}
     password: ${spring.datasource.password}
 
-  ## SECURITY CONFIG
-  security:
-    user:
-      name: ${SEC_USER:root} # default (user)
-      password: ${SEC_PASS:pass} # default (Using generated security password: xyz)
+#  ## SECURITY CONFIG
+#  security:
+#    user:
+#      name: ${SEC_USER:root} # default (user)
+#      password: ${SEC_PASS:pass} # default (Using generated security password: xyz)
 
 ## LOGGING CONFIG
 logging:
