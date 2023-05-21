@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS patients
     surname       VARCHAR(50) NOT NULL,
     pesel         VARCHAR(12) NOT NULL,
     date_of_birth DATE        NOT NULL,
-    phone_number  DATE        NOT NULL,
+    phone_number  VARCHAR(15) NOT NULL,
     user_id       BIGINT      NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users (id)
+    FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
