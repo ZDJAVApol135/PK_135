@@ -2,6 +2,12 @@
 application:
   title: Registration API (PROD) =>
 
+## SPRING CONFIG
+spring:
+  sql:
+    init:
+      mode: never
+
 ## ACTUATOR CONFIG
 management:
   endpoints:
