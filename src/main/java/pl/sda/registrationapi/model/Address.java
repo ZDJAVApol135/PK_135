@@ -35,6 +35,11 @@ public class Address {
     @JoinColumn(name = "patient_id", referencedColumnName = "id")
     private Patient patient;
 
+    @ToString.Exclude
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "doctor_id", referencedColumnName = "id")
+    private Doctor doctor;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
