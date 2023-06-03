@@ -32,11 +32,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain defaultFilter(HttpSecurity http) throws Exception {
         http
-                .csrf(AbstractHttpConfigurer::disable)
+                .csrf(AbstractHttpConfigurer::disable) // don't do that in prod
                 .authorizeHttpRequests(req -> req
                         .requestMatchers("/api/**").authenticated()
                         .anyRequest().permitAll()
-
                 )
                 .httpBasic(Customizer.withDefaults());
 
@@ -54,7 +53,6 @@ public class SecurityConfig {
     public UserDetailsService testUserDetailsService(PasswordEncoder passwordEncoder) {
 
         String pass = passwordEncoder.encode("pass");
-        System.out.println(pass);
 
         UserDetails doctor = User.withUsername("doctor")
                 .password(pass)

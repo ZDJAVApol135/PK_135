@@ -2,10 +2,10 @@
 server:
   port: 9090
 
-## APP CONFIG
+## APP CONFIG - CUSTOM
 application:
   title: Registration API
-  version: @project.version@
+  version: @project.version@ # FROM pom.xml
 
 ## SPRING CONFIG
 spring:
