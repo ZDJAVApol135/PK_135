@@ -1,12 +1,15 @@
 package pl.sda.registrationapi.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pl.sda.registrationapi.dto.UserDTO;
 import pl.sda.registrationapi.service.UsersService;
+import pl.sda.registrationapi.utils.PageReqUtils;
 
 import java.util.List;
 
@@ -28,9 +31,18 @@ public class UsersController {
 
     private final UsersService usersService;
 
+    // PathVariable - http://localhost:9090/api/users/1
+    // RequestParam - http://localhost:9090/api/users?page=0&size=10&sortDirection=DESC&sortColumn=email
+
     @GetMapping
-    public ResponseEntity<List<UserDTO>> getAll() {
-        return ResponseEntity.ok(usersService.findAll());
+    public ResponseEntity<List<UserDTO>> getPage(
+            @RequestParam(required = false, defaultValue = "0") int page,
+            @RequestParam(required = false, defaultValue = "50") int size,
+            @RequestParam(required = false, defaultValue = "ASC") Sort.Direction sortDirection,
+            @RequestParam(required = false) String sortColumn) {
+
+        PageRequest pageReq = PageReqUtils.createPageReq(page, size, sortDirection, sortColumn);
+        return ResponseEntity.ok(usersService.findAll(pageReq));
     }
 
     @GetMapping("/{id}")

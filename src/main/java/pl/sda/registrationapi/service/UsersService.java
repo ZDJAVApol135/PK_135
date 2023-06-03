@@ -2,6 +2,7 @@ package pl.sda.registrationapi.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.sda.registrationapi.dto.UserDTO;
@@ -22,13 +23,11 @@ public class UsersService {
     private final PasswordEncoder passwordEncoder;
     private final UsersRepository usersRepository;
 
-    // TODO: Pagination and Sorting
-    public List<UserDTO> findAll() {
-        log.info("Fetch all users...");
+    public List<UserDTO> findAll(PageRequest pageRequest) {
+        log.info("Fetch users page req: '{}'... ", pageRequest);
 
-        List<UserDTO> users = usersRepository.findAll().stream()
-                .map(usersMapper::map)
-                .toList();
+        List<UserDTO> users = usersRepository.findAll(pageRequest)
+                .stream().map(usersMapper::map).toList();
 
         log.info("Fetching users completed.");
         return users;
