@@ -16,7 +16,7 @@ public class ErrorResponse {
     private String error;
     private String message;
 
-    public static ErrorResponse of(HttpStatus httpStatus, RuntimeException ex) {
+    public static ErrorResponse of(HttpStatus httpStatus, Exception ex) {
         return ErrorResponse.builder()
                 .timestamp(LocalDateTime.now())
                 .status(httpStatus.value())

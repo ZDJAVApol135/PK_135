@@ -34,6 +34,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable) // don't do that in prod
                 .authorizeHttpRequests(req -> req
+                        .requestMatchers("/api/signup/**").permitAll()
                         .requestMatchers("/api/**").authenticated()
                         .anyRequest().permitAll()
                 )

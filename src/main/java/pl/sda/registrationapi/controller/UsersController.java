@@ -1,5 +1,7 @@
 package pl.sda.registrationapi.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -15,9 +17,12 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/users")
+@Tag(name = "Users Controller")
 @PreAuthorize("hasRole('ADMIN')")
+@RequestMapping(UsersController.USERS_ENDPOINT)
 public class UsersController {
+
+    public final static String USERS_ENDPOINT = "/api/users";
 
     // HTTP Methods
     // =============================
@@ -51,14 +56,14 @@ public class UsersController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDTO> create(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<UserDTO> create(@Valid @RequestBody UserDTO userDTO) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(usersService.create(userDTO));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserDTO> updateById(@PathVariable Long id, @RequestBody UserDTO userDTO) {
+    public ResponseEntity<UserDTO> updateById(@PathVariable Long id, @Valid @RequestBody UserDTO userDTO) {
         return ResponseEntity.ok(usersService.update(id, userDTO));
     }
 

@@ -30,7 +30,6 @@ public class User {
     @Column(nullable = false, length = 25)
     private Role role;
 
-    @Column(nullable = false)
     private boolean enabled;
 
     @Column(nullable = false)
