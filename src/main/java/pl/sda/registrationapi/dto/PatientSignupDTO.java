@@ -35,6 +35,7 @@ public class PatientSignupDTO {
     @Length(max = 12, message = "Name max length exceeded (max = 12)!")
     private String pesel;
 
+    @NotNull(message = "Date of birth must not be blank!")
     @PastOrPresent(message = "Date of birth must not be in past or present!")
     private LocalDate dateOfBirth;
 
