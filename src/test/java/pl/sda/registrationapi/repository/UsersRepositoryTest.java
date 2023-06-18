@@ -57,7 +57,6 @@ class UsersRepositoryTest {
         // then
         Assertions.assertTrue(optUser.isPresent());
         Assertions.assertEquals(expectedUser, optUser.get());
-
     }
 
     @ParameterizedTest

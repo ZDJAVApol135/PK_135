@@ -156,7 +156,7 @@ class UsersServiceTest {
                 .build();
 
         // when
-         Executable executable = () -> usersService.update(id, userDTO);
+        Executable executable = () -> usersService.update(id, userDTO);
 
         // then
         Assertions.assertThrows(ConflictException.class, executable);
